@@ -1,8 +1,10 @@
+
 import { configureStore } from '@reduxjs/toolkit';
 import tasksReducer from './slices/tasksSlice';
 import filtersReducer from './slices/filtersSlice';
+import thoughtsReducer from './slices/thoughtSlice'; // Add this import
 
-// Load state from localStorage
+// Lod state from lcalStrge
 const loadState = () => {
   try {
     const serializedState = localStorage.getItem('reduxState');
@@ -10,18 +12,18 @@ const loadState = () => {
       return undefined;
     }
     return JSON.parse(serializedState);
-  } catch  {
+  } catch {
     return undefined;
   }
 };
 
-// Save state to localStorage
+// Savingng state to lcalStrge
 const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('reduxState', serializedState);
   } catch {
-    // ignore errors
+    //error part. in future update it
   }
 };
 
@@ -29,13 +31,14 @@ const preloadedState = loadState();
 
 export const store = configureStore({
   reducer: {
-    tasks: tasksReducer,
-    filters: filtersReducer,
+    tasks: tasksReducer,// from taskslice
+    filters: filtersReducer, // from filterslice
+    thought: thoughtsReducer, //from thoughslice
   },
   preloadedState,
 });
 
-// Subscribe to store changes to save to localStorage
+// sbuscribe to store the lcalstrge
 store.subscribe(() => {
   saveState(store.getState());
 });

@@ -1,11 +1,42 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateThought } from "../redux/slices/thoughtSlice";
 
 const Sidebar = () => {
-//   const nav = ["Home", "Messages", "Tasks", "Members", "Settings"];
-//   const projects = ["Mobile App", "Website Redesign", "Design System", "Wireframes"];
+  const dispatch = useDispatch();
+  
+  // Safe selector with fallback
+  const currentThought = useSelector(state => 
+    state.thought?.currentThought || "Let's finish the mobile app design today! "
+  );
+  
+  const [isWriting, setIsWriting] = useState(false);
+  const [thoughtInput, setThoughtInput] = useState(currentThought);
+  useEffect(() => {
+    setThoughtInput(currentThought);
+  }, [currentThought]);
+  const handleSubmitThought = (e) => {
+    e.preventDefault();
+    if (thoughtInput.trim()) {
+      console.log("Dispatching thought:", thoughtInput);
+      dispatch(updateThought(thoughtInput));
+      console.log("Thought should be updated now");
+      setIsWriting(false);
+      
+    }
+  };
+
+  const handleCancel = () => {
+    setThoughtInput(currentThought);
+    setIsWriting(false);
+  };
+
+  console.log("Current thought in UI:", currentThought);
 
   return (
     <aside className="w-64 bg-white border-r px-5 py-6 flex flex-col">
+      
       <div className="mb-6 flex item-center">
 
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,22 +50,7 @@ const Sidebar = () => {
 
       <nav className="flex-1">
         <ul className="space-y-2">
-          {/* {nav.map((n) => (
-            <li key={n} className="p-2 rounded-md hover:bg-gray-100 cursor-pointer">
-              {n}
-            </li>
-          ))} */}
-           {/* <li  className="p-2 rounded-md hover:bg-gray-100 cursor-pointer flex item-center gap-1">
-               <svg width="22" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z" fill="#787486"/>
-                 <path d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z" fill="#787486"/>
-                 <path d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z" fill="#787486"/>
-                 <path d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z" fill="#787486"/>
-               </svg>
-               <p>Home</p>
-
-               
-            </li> */}
+          
             <li className="p-2 rounded-md hover:bg-gray-100 cursor-pointer flex items-center gap-2 ">
               <svg width="22" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z" fill="#787486"/>
@@ -99,13 +115,6 @@ const Sidebar = () => {
             </div>
           
           <ul className="space-y-1">
-            {/* {projects.map((p) => (
-              <li key={p} className="p-2 rounded-md hover:bg-gray-100 cursor-pointer">
-                <div className="flex items-center justify-between">
-                  <span>{p}</span>
-                </div>
-              </li>
-            ))} */}
             <li  className="p-2 rounded-md hover:bg-gray-100 cursor-pointer">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -142,16 +151,64 @@ const Sidebar = () => {
           </ul>
         </div>
       </nav>
-
-      <div className="mt-auto bg-gray-200 p-4 rounded-lg text-center flex  flex-col items-center">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <path d="M19.21 6.36C18.17 4.26 16.16 2.71 13.83 2.2C11.39 1.66 8.88997 2.24 6.97997 3.78C5.05997 5.31 3.96997 7.6 3.96997 10.05C3.96997 12.64 5.51997 15.35 7.85997 16.92V17.75C7.84997 18.03 7.83997 18.46 8.17997 18.81C8.52997 19.17 9.04997 19.21 9.45997 19.21H14.59C15.13 19.21 15.54 19.06 15.82 18.78C16.2 18.39 16.19 17.89 16.18 17.62V16.92C19.28 14.83 21.23 10.42 19.21 6.36Z" fill="#FBCB18"/>
-         <path d="M15.26 22C15.2 22 15.13 21.99 15.07 21.97C13.06 21.4 10.95 21.4 8.93997 21.97C8.56997 22.07 8.17997 21.86 8.07997 21.49C7.96997 21.12 8.18997 20.73 8.55997 20.63C10.82 19.99 13.2 19.99 15.46 20.63C15.83 20.74 16.05 21.12 15.94 21.49C15.84 21.8 15.56 22 15.26 22Z" fill="#FBCB18"/>
-        </svg>
-
-        <p className="text-sm font-bold">Thoughts Time</p>
+      {/* Updated Thoughts Time Section */}
+      <div className="mt-auto bg-[#F5F5F5] p-4 rounded-lg text-center">
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.21 6.36C18.17 4.26 16.16 2.71 13.83 2.2C11.39 1.66 8.88997 2.24 6.97997 3.78C5.05997 5.31 3.96997 7.6 3.96997 10.05C3.96997 12.64 5.51997 15.35 7.85997 16.92V17.75C7.84997 18.03 7.83997 18.46 8.17997 18.81C8.52997 19.17 9.04997 19.21 9.45997 19.21H14.59C15.13 19.21 15.54 19.06 15.82 18.78C16.2 18.39 16.19 17.89 16.18 17.62V16.92C19.28 14.83 21.23 10.42 19.21 6.36Z" fill="#FBCB18"/>
+            <path d="M15.26 22C15.2 22 15.13 21.99 15.07 21.97C13.06 21.4 10.95 21.4 8.93997 21.97C8.56997 22.07 8.17997 21.86 8.07997 21.49C7.96997 21.12 8.18997 20.73 8.55997 20.63C10.82 19.99 13.2 19.99 15.46 20.63C15.83 20.74 16.05 21.12 15.94 21.49C15.84 21.8 15.56 22 15.26 22Z" fill="#FBCB18"/>
+          </svg>
+          <p className="text-sm font-bold">Thoughts Time</p>
+        </div>
+        
         <p className="text-xs text-gray-500 mb-3">You can share your thoughts with your peers.</p>
-        <button className="text-xs bg-white shadow px-3 py-1 rounded">Write a message</button>
+
+        {/* disply c/n though */}
+        {currentThought && !isWriting && (
+          <div className="mb-3 p-3 bg-white rounded-lg border border-gray-200">
+            <p className="text-sm text-gray-700 text-left">{currentThought}</p>
+          </div>
+        )}
+
+        {!isWriting ? (
+          <button 
+            onClick={() => {
+              setThoughtInput(currentThought); // reseting i.p to c/n thought
+              setIsWriting(true);
+            }}
+            className="text-xs bg-white shadow px-3 py-2 rounded border border-gray-200 hover:bg-gray-50 w-full"
+          >
+            Write a message
+          </button>
+        ) : (
+          <form onSubmit={handleSubmitThought} className="space-y-2">
+            <textarea
+              value={thoughtInput}
+              onChange={(e) => setThoughtInput(e.target.value)}
+              placeholder="Share your thoughts (max 40 words)..."
+              className="w-full p-2 text-sm border border-gray-300 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="3"
+              maxLength={200}
+              autoFocus
+            />
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="flex-1 text-xs bg-gray-500 text-white px-3 py-2 rounded hover:bg-gray-600"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="flex-1 text-xs bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700"
+                disabled={!thoughtInput.trim()}
+              >
+                Update
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </aside>
   );
