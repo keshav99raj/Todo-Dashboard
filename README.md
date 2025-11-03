@@ -1,16 +1,27 @@
-# React + Vite
+# To do Dashboard using React
+  - This project is a **task management dashboard UI** inspired by the [Creative Upaay Figma Design](https://www.figma.com/design/2joKVlIEH43PfO9pFfsX51/DASHBOARD-DESIGN-TASK---CREATIVE-UPAAY?node-id=0-1).  
+- It is built using **React (Vite)** and **Tailwind CSS**, with clean modular components and ready structure for Redux integration.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ 
+- The application provides a clean, intuitive interface for managing tasks across different stages of completion - from "To Do" to "In Progress" to "Done".
+- For state management I use REDUX -:application state is persistent using Local Storage. This means that tasks and their states will remain intact even after a page refresh.
 
-Currently, two official plugins are available:
+## Project Structure 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+src/  
+├── components/          
+│   ├── Sidebar.jsx      
+│   ├── Header.jsx       
+│   ├── TaskColumn.jsx   
+│   └── FilterDropdown.jsx   
+├── pages/        
+│   └── DashboardPage.jsx        
+└── App.jsx             
 
-## React Compiler
+##  Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-  Beautiful **dashboard layout**
+-  Component-based architecture (Sidebar, Header, TaskColumn)
+-  Styled with **Tailwind CSS**
+- **In-memory state management** (temporary state using React hooks)
+- Future support for **Redux Toolkit** and **drag-and-drop*
