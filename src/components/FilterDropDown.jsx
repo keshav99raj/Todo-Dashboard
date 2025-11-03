@@ -1,16 +1,14 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory, setPriority, clearFilters } from "../redux/slices/filtersSlice";
+import {  setPriority, clearFilters } from "../redux/slices/filtersSlice";
 
 export default function FilterDropdown() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
-  const { category, priority } = useSelector(state => state.filters);
+  const {  priority } = useSelector(state => state.filters);
 
-  const handleCategoryChange = (value) => {
-    dispatch(setCategory(value));
-  };
+  
 
   const handlePriorityChange = (value) => {
     dispatch(setPriority(value));
@@ -19,6 +17,11 @@ export default function FilterDropdown() {
   const handleClearFilters = () => {
     dispatch(clearFilters());
     setOpen(false);
+  };
+  
+  const getDisplayText = () => {
+    if (priority === "All") return "Filter";
+    return `Priority: ${priority}`;
   };
 
   return (
@@ -43,7 +46,7 @@ export default function FilterDropdown() {
           />
         </svg>
 
-        <span>Filter</span>
+        <span>{getDisplayText()}</span>
 
         {/* DownDrop down sbg  */}
         <svg
@@ -59,21 +62,8 @@ export default function FilterDropdown() {
 
       {open && (
         <div className="absolute mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-md z-10">
-          {/* Tsk Catgry Sectn */}
-          <div className="p-3 border-b">
-            <h4 className="text-sm font-semibold text-gray-700 mb-2">Task Category</h4>
-            <select 
-              className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-              value={category}
-              onChange={(e) => handleCategoryChange(e.target.value)}
-            >
-              <option value="All">All Categories</option>
-              <option value="Design">Design</option>
-              <option value="Development">Development</option>
-              <option value="Research">Research</option>
-              <option value="Planning">Planning</option>
-            </select>
-          </div>
+        
+         
           
           {/* prity sectn */}
           <div className="p-3 border-b">
