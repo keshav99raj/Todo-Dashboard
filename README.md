@@ -26,6 +26,7 @@
 
 - Delete the Card Element -: Every card has Delete option. 
 <br>
+
  ![option image](./src/assets/Screenshot%202025-11-15%20202656.png )
 
 - Drag and Drop card Element-: Individual card can be dragged and dropped from one column to another. 
