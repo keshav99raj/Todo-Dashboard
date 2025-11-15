@@ -41,19 +41,7 @@ const Header = () => {
       {/*rght prfl and icn*/}
       <div className="flex items-center gap-4">
         <div className="p-2 rounded-md bg-gray-100">
-          {/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-               xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 2V5" stroke="#787486" strokeWidth="1.5"
-                  strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M16 2V5" stroke="#787486" strokeWidth="1.5"
-                  strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M3.5 9.09H20.5" stroke="#787486" strokeWidth="1.5"
-                  strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
-                  stroke="#787486" strokeWidth="1.5" strokeLinecap="round"
-                  strokeLinejoin="round" />
-          </svg> */}
-
+        
           <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
            <path d="M108.02 2.91C104.71 2.91 102.02 5.6 102.02 8.91V11.8C102.02 12.41 101.76 13.34 101.45 13.86L100.3 15.77C99.59 16.95 100.08 18.26 101.38 18.7C105.69 20.14 110.34 20.14 114.65 18.7C115.86 18.3 116.39 16.87 115.73 15.77L114.58 13.86C114.28 13.34 114.02 12.41 114.02 11.8V8.91C114.02 5.61 111.32 2.91 108.02 2.91Z" stroke="#787486" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
            <path d="M109.87 3.2C109.56 3.11 109.24 3.04 108.91 3C107.95 2.88 107.03 2.95 106.17 3.2C106.46 2.46 107.18 1.94 108.02 1.94C108.86 1.94 109.58 2.46 109.87 3.2Z" stroke="#787486" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
