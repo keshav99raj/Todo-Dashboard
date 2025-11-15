@@ -31,18 +31,21 @@
 
 - Drag and Drop card Element-: Individual card can be dragged and dropped from one column to another. 
 
-- Filter -: 
-      - Here Filtering of card can be done based on priority . 
+- Filter -:
+   <br> 
+
+    - Here Filtering of card can be done based on priority . 
       <br>
  
-      ![option image](./src/assets/image3.png )
+  ![option image](./src/assets/image3.png )
 
-      -  Also one more filter is there that is for filtering based on Days
+    -  Also one more filter is there that is for filtering based on Days
 
-      ![option image](./src/assets/image4.png )
+  ![option image](./src/assets/image4.png )
 
 - Search Functionality-:
     - Here we Can search based on title of card 
+    
      ![option image](./src/assets/image5.png )
 
 
