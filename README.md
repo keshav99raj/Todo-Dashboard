@@ -22,11 +22,30 @@
 
 - Add new Card to columns-: If want to add new card to column .It can be done Through add option directly clicking on it open a form  . And it add new card to respective column .
  
- ![option image](./src/assets/Screenshot%202025-11-15%20201654.png )
+   ![option image](./src/assets/Screenshot%202025-11-15%20201654.png )
 
 - Delete the Card Element -: Every card has Delete option. 
 <br>
 
- ![option image](./src/assets/Screenshot%202025-11-15%20202656.png )
+  ![option image](./src/assets/Screenshot%202025-11-15%20202656.png )
 
 - Drag and Drop card Element-: Individual card can be dragged and dropped from one column to another. 
+
+- Filter -: 
+      - Here Filtering of card can be done based on priority . 
+      <br>
+ 
+      ![option image](./src/assets/image3.png )
+
+      -  Also one more filter is there that is for filtering based on Days
+
+      ![option image](./src/assets/image4.png )
+
+- Search Functionality-:
+    - Here we Can search based on title of card 
+     ![option image](./src/assets/image5.png )
+
+
+
+ 
+ 
