@@ -6,17 +6,7 @@
 - The application provides a clean, intuitive interface for managing tasks across different stages of completion - from "To Do" to "In Progress" to "Done".
 - For state management I use REDUX -:application state is persistent using Local Storage. This means that tasks and their states will remain intact even after a page refresh.
 
-## Project Structure 
-
-src/  
-├── components/          
-│   ├── Sidebar.jsx      
-│   ├── Header.jsx       
-│   ├── TaskColumn.jsx   
-│   └── FilterDropdown.jsx   
-├── pages/        
-│   └── DashboardPage.jsx        
-└── App.jsx             
+           
 
 ##  Features
 
@@ -25,3 +15,16 @@ src/
 -  Styled with **Tailwind CSS**
 - **In-memory state management** (temporary state using React hooks)
 - Future support for **Redux Toolkit** and **drag-and-drop*
+- Drag and Drop functionality . 
+
+
+## Key functinalities
+
+- Add new Card to columns-: If want to add new card to column .It can be done Through add option directly clicking on it open a form  . And it add new card to respective column .
+ 
+ ![option image](./src/assets/Screenshot%202025-11-15%20201654.png )
+
+- Delete the Card Element -: Every card has Delete option. 
+ ![option image](./src/assets/Screenshot%202025-11-15%20202656.png )
+ 
+- Drag and Drop card Element-: Individual card can be dragged and dropped from one column to another. 

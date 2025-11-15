@@ -1,32 +1,37 @@
-
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTask } from '../redux/slices/tasksSlice';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTask } from "../redux/slices/tasksSlice";
 
 const AddTaskModal = ({ isOpen, onClose, column }) => {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
-  const [desc, setDesc] = useState('');
-  const [priority, setPriority] = useState('Low');
-  const [dueDate, setDueDate] = useState('Today');
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [priority, setPriority] = useState("Low");
+  const [dueDate, setDueDate] = useState("Today");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim()) {
-      dispatch(addTask({
-        column: column === 'To Do' ? 'todoTasks' : 
-                column === 'On Progress' ? 'inProgressTasks' : 'doneTasks',
-        task: { 
-          title, 
-          desc, 
-          priority,
-          dueDate 
-        }
-      }));
-      setTitle('');
-      setDesc('');
-      setPriority('Low');
-      setDueDate('Today');
+      dispatch(
+        addTask({
+          column:
+            column === "To Do"
+              ? "todoTasks"
+              : column === "On Progress"
+              ? "inProgressTasks"
+              : "doneTasks",
+          task: {
+            title,
+            desc,
+            priority,
+            dueDate,
+          },
+        })
+      );
+      setTitle("");
+      setDesc("");
+      setPriority("Low");
+      setDueDate("Today");
       onClose();
     }
   };
@@ -50,7 +55,7 @@ const AddTaskModal = ({ isOpen, onClose, column }) => {
               required
             />
           </div>
-          
+
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Description
@@ -94,7 +99,7 @@ const AddTaskModal = ({ isOpen, onClose, column }) => {
               </select>
             </div>
           </div>
-          
+
           <div className="flex justify-end gap-2">
             <button
               type="button"

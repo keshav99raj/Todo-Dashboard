@@ -28,8 +28,25 @@ const TaskCard = ({ task, column }) => {
     setShowMenu(false);
   };
 
+  // Drag start handler
+  const handleDragStart = (e) => {
+    e.dataTransfer.setData("taskId", task.id);
+    e.dataTransfer.setData("fromColumn", column);
+    e.currentTarget.classList.add("opacity-50");
+  };
+
+  // Drag end handler
+  const handleDragEnd = (e) => {
+    e.currentTarget.classList.remove("opacity-50");
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-sm border p-4 mb-4 relative">
+    <div 
+      className="bg-white rounded-lg shadow-sm border p-4 mb-4 relative cursor-grab active:cursor-grabbing"
+      draggable="true"
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+    >
       <div className="flex justify-between items-start">
         <div className="flex gap-2">
           <span className={`text-xs font-medium px-2 py-1 rounded-full ${badgeClass}`}>
