@@ -2,7 +2,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import tasksReducer from './slices/tasksSlice';
 import filtersReducer from './slices/filtersSlice';
-import thoughtsReducer from './slices/thoughtSlice'; // Add this import
+import thoughtsReducer from './slices/thoughtSlice'; 
 
 // Lod state from lcalStrge
 const loadState = () => {
